@@ -1,0 +1,20 @@
+<div class="search-container">
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    (input)="onInputChange()"
+    placeholder="Enter city name..."
+  />
+  <button (click)="search()">Search</button>
+
+  <ul class="history" *ngIf="filteredHistory.length > 0">
+    <li *ngFor="let city of filteredHistory">
+      <span (click)="search(city)">{{ city }}</span>
+      <button (click)="delete(city)">x</button>
+    </li>
+  </ul>
+
+  <button *ngIf="history.length > 0" (click)="clearHistory()">
+    Clear All
+  </button>
+</div>
